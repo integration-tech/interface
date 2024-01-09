@@ -109,10 +109,10 @@ function loadFormUI() {
         }
       </style>
       <div class="form">
-        <h2>Sign Up</h2>
+        <h2>${form.Heading}</h2>
         <form action="#" method="POST">
           ${generateFormFields(formConfig)}
-          <button type="submit">Sign Up</button>
+          <button type="submit">${form.buttonName}</button>
         </form>
       </div>
   `;
@@ -160,7 +160,6 @@ function generateFormFields(config) {
           `;
       } 
       else if (field.type === 'color' || field.type === 'range') {
-        // Handle color and range fields separately
         return `
           <label>${field.label}:</label>
           <input type="${field.type}" id="${field.name}" name="${field.name}" ${
@@ -177,17 +176,20 @@ function generateFormFields(config) {
   }).join('');
 }
 
-loadFormUI();
 
-function setFormConfiguration({ apiname, name }) {
+
+function setFormConfiguration({ apiname, Heading, buttonName }) {
   window.form.apiname = apiname;
-  window.form.name = name;
+  window.form.Heading = Heading;
+  window.form.buttonName = buttonName;
 }
 
 window.form = {};
 window.form.setFormConfiguration = setFormConfiguration;
 
 setTimeout(() => {
+  loadFormUI();
   console.log("api: " + form.apiname);
-  console.log("name: " + form.name);
+  console.log("name: " + form.Heading);
+  console.log("name: " + form.buttonName);
 }, 1000);
