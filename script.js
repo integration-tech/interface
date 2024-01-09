@@ -158,7 +158,17 @@ function generateFormFields(config) {
             <label>${field.label}:</label>
             <input type="${field.type}" src="${field.src}" alt="${field.alt}" />
           `;
-      } else {
+      } 
+      else if (field.type === 'color' || field.type === 'range') {
+        // Handle color and range fields separately
+        return `
+          <label>${field.label}:</label>
+          <input type="${field.type}" id="${field.name}" name="${field.name}" ${
+          field.type === 'range' ? 'min="0" max="100"' : ''} ${
+          field.type === 'color' ? 'value="#000000"' : ''} />
+        `;
+      } 
+      else {
           return `
             <label for="${field.name}">${field.placeholder}:</label>
             <input type="${field.type}" id="${field.name}" name="${field.name}" placeholder="${field.placeholder}" required />
