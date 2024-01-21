@@ -75,10 +75,7 @@
       cursor: not-allowed;
     }
 
-    /* #loading {
-      display: none;
-      text-align: center;
-    } */
+   
   </style>
 </head>
 <body>
@@ -102,10 +99,10 @@
   <script>
     function submitForm() {
       var form = document.getElementById("signupForm");
-    //   var loading = document.getElementById("loading");
+   
       var button = document.querySelector("button");
 
-    //   loading.style.display = "block";
+   
       button.innerText = "Loading...";
       button.classList.add("loading");
 
@@ -115,7 +112,7 @@
         button.innerText = "Signup";
         button.classList.remove("loading");
         
-      }, 1000); // Simulating a 2-second signup process
+      }, 1000); // Simulating a 1-second signup process
     }
   </script>
 </body>
