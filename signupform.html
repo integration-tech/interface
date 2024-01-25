@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Signup Form</title>
+  <style>
+    body {
+      margin: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      background-color: #f0f0f0; /* Light grey background */
+    }
+    h2{
+        text-align: center;
+    }
+
+    .glass-container {
+      background: rgba(255, 255, 255, 0.2); /* Glassmorphism effect */
+      border-radius: 10px;
+      padding: 20px;
+      width: 300px;
+      height: 350px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      text-align: center;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 5px;
+      color: #333;
+      text-align: left;
+    }
+
+    input {
+      width: 100%;
+      padding: 10px 1px 10px 8px;
+      border-color: #961414 ;
+     
+      margin-bottom: 15px;
+      border: none;
+      border-radius: 5px;
+      background: rgba(255, 255, 255, 0.8);
+      transition: border-color 0.3s ease; /* Transition effect on border color change */
+    }
+    input:hover {
+      border-color: rgba(219, 52, 66, 0.8); /* Change border color on hover */
+    }
+    input:focus {
+      
+      box-shadow:0 0 0 0.25rem rgba(96, 77, 10, 0.4); /* Add a subtle box shadow on focus */
+    }
+
+    button {
+    
+      padding: 10px;
+      border: none;
+      border-radius: 5px;
+      background: #3498db;
+      color: #fff;
+      cursor: pointer;
+      font-weight: bold;
+      font-size: medium;
+      /* cursor: not-allowed; */
+    }
+    button:hover{
+      opacity: .7;
+      background-color: #9c9999;
+    }
+
+    button.loading {
+      background: #bdc3c7; /* Grey out when loading */
+      cursor: not-allowed;
+    }
+
+    /* #loading {
+      display: none;
+      text-align: center;
+    } */
+  </style>
+</head>
+<body>
+  <div class="glass-container">
+    <h2>Signup</h2>
+    <form id="signupForm">
+      <label for="username">Username</label>
+      <input type="text" id="username" placeholder="Enter your username" required>
+
+      <label for="email">Email</label>
+      <input type="email" id="email" placeholder="Enter your email" required>
+
+      <label for="password">Password</label>
+      <input type="password" id="password" placeholder="Enter your password" required>
+
+      <button type="button" onclick="submitForm() ">Signup</button>
+      <!-- <div id="loading">Loading...</div> -->
+    </form>
+  </div>
+
+  <script>
+    function submitForm() {
+      var form = document.getElementById("signupForm");
+    //   var loading = document.getElementById("loading");
+      var button = document.querySelector("button");
+
+    //   loading.style.display = "block";
+      button.innerText = "Loading...";
+      button.classList.add("loading");
+
+      setTimeout(function() {
+        form.reset();
+       
+        button.innerText = "Signup";
+        button.classList.remove("loading");
+        
+      }, 1000); // Simulating a 2-second signup process
+    }
+  </script>
+</body>
+</html>
